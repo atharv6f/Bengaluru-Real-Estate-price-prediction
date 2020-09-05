@@ -1,0 +1,9 @@
+{
+    "python.linting.pylintEnabled": true,
+    "python.linting.enabled": true,
+    "python.linting.pylintArgs": [
+        "--load-plugins",
+        "pylint-flask"
+    ],
+    "python.pythonPath": "c:\\Users\\athar\\Desktop\\Real_Estate_Final\\flask_app\\Scripts\\python.exe"
+}

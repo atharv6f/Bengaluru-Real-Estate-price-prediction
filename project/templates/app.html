@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{%block content%}
+<div class="img"></div>
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-4">Welcome {{current_user.username|capitalize}}</h1>
+    <p class="lead"> <strong><em>Please fill out the form to get the estimated price...</em></strong> </p>
+  </div>
+</div>
+  <div class = "container">    
+    <form action="" method="POST" class="form" role="form">
+        {{ form.hidden_tag() }}
+        
+        {{wtf.form_field(form.area)}}
+        <p class="lead">Bathrooms</p>
+        {{wtf.form_field(form.bathrooms)}}
+        
+        <p class="lead">Bedrooms</p>
+        {{wtf.form_field(form.beedrooms)}}
+        {{wtf.form_field(form.location)}}
+        {{wtf.form_field(form.submit, class="submit")}}
+
+
+        <div class="jumbotron jumbotron-fluid" style="background-color: #a5dc86;">
+          <div class="container">
+            {%if price < 0%}
+
+            {% elif price >= 100%}
+                {% set price = price/100 %}
+                <h2 class = 'WebRupee'>&#x20B9;{{'%0.2f'| format(price)}}Cr. +Taxes</h2>
+            {%else%}
+                <h2 class = 'WebRupee'>&#x20B9;{{'%0.2f'| format(price)}}Lac. +Taxes</h2>
+           
+            {%endif%}
+          </div>
+        </div>
+   
+    </form>
+        
+</div>
+<style>
+  h2{
+      background: #a5dc86;
+      color: black;
+      font-weight: strong;
+  width: 100%;
+  border: 0;
+  margin: 25px 0 5px;
+  box-sizing: border-box;
+  font-size: 15px;
+  height: 30px;
+  text-align: center;
+      opacity: 0.8; 
+      font-size: 20px;
+      font-weight: Bold;
+      border-radius: 5px;
+      font-family: Arial, Helvetica, sans-serif;
+  }
+  .form{
+  max-width: 270px;
+font-family: "Lucida Grande", Tahoma, Verdana, sans-serif;
+font-weight: normal;
+line-height: 1.625;
+margin: 8px auto;
+  padding-left: 16px;
+  padding-top: 50px;
+z-index: 2;
+  }
+  .submit{
+  background: #a5dc86;
+  width: 76%;
+  border: 0;
+  margin: 25px 0 10px;
+  box-sizing: border-box;
+  font-size: 15px;
+	height: 35px;
+	text-align: center;
+	border-radius: 5px;
+}
+</style>
+{%endblock%}
