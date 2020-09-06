@@ -27,7 +27,7 @@
       
  5. **Configuring Environment Variables**
      * **sudo touch /etc/config.json** (Add environment variables in this file.)
-     * **sudo nano /etc/config.json** 
+     * **sudo nano /etc/config.json**  (Copy the following code in the config.json file)
      ```
      {
           'SECRET_KEY': "YOUR_SECRET_KEY",
@@ -35,3 +35,25 @@
           'EMAIL_PASS': "YOUR PASSWORD"
      }
      ```
+ 6. **Configuring Nginx**
+ * **sudo apt install nginx** (Make sure that the virtual environment in activated)
+ * **sudo rm/etc/nginx/sites-enabled/default** (Remove the default nginx config file)
+ * **sudo touch /etc/nginx/sites-enabled/any_file_name** (Create our own config file in the sites-enabled directory
+ * **sudi nano /etc/nginx/sites-enabled/any_file_name** 
+ ```
+ server {
+    listen 80;
+    server_name YOUR_IP_OR_DOMAIN;
+
+    location /static {
+        alias /home/YOUR_USER/YOUR_PROJECT/project/static;
+    }
+
+    location / {
+        proxy_pass http://localhost:8000;
+        include /etc/nginx/proxy_params;
+        proxy_redirect off;
+    }
+}
+ ```
+ 
