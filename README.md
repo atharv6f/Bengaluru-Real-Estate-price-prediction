@@ -42,6 +42,7 @@
     * **flask db upgrade** (Applies the upgrade to the database schema)
     
  7. **Configuring Nginx**
+    * *Nginx is a web server that is highly optimized to serve static files, forward requests which need to be dynamic to Gunicorn and handle lots of requests coming in at once *
     * **sudo apt install nginx** (Make sure that the virtual environment in activated)
     * **sudo rm/etc/nginx/sites-enabled/default** (Remove the default nginx config file)
     * **sudo touch /etc/nginx/sites-enabled/any_file_name** (Create our own config file in the sites-enabled directory
@@ -66,6 +67,7 @@
   
    * **sudo systemctl restart nginx** (Closes all the sub-processes adn restarts the whole package)
  8. **Configuring Gunicorn**
+    * *Once Nginx decides, that a particular request should be passed on Gunicorn, then, Gunicorn transalates requests coming in from Nginx to be WSGI compatible, trasalat the WSGI responses of our app into proper http responses and actuall call the python code when a request comes in*
     * **pip install gunicorn** (Again make sure that the virtual environment is activated)
     * **gunicorn -w 3 app:app** (Number of workers = 2 * (Number of cores) + 1)
     * **nproc --all** (Gives the number of cores)
