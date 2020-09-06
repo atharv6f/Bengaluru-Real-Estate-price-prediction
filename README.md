@@ -40,7 +40,7 @@
     * **sudo rm/etc/nginx/sites-enabled/default** (Remove the default nginx config file)
     * **sudo touch /etc/nginx/sites-enabled/any_file_name** (Create our own config file in the sites-enabled directory
     * **sudo nano /etc/nginx/sites-enabled/any_file_name** 
-    * **sudo systemctl restart nginx** 
+    
         ```
         server {
             listen 80;
@@ -57,6 +57,7 @@
         }
     }
     ```
+   * **sudo systemctl restart nginx** (Closes all the sub-processes adn restarts the whole package)
  7. **Configuring Gunicorn**
     * **pip install gunicorn** (Again make sure that the virtual environment is activated)
     * **gunicorn -w 3 app:app** (Number of workers = 2 * (Number of cores) + 1)
