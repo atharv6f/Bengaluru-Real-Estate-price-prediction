@@ -35,6 +35,11 @@
           'EMAIL_PASS': "YOUR PASSWORD"
          }
         ```
+ 6. **Configuring Flask-Migrate**
+    * **export FLASK_APP=app.py** (Allows the user to run flask application from CLI)
+    * **flask db init** (Creates a migration repo that stores different versions of our database schema)
+    * **flask db migrate -m "YOUR_MESSAGE"** (Generates the initial migration accounting for the changes in the database schema)
+    * **flask db upgrade** (Applies the upgrade to the database schema)
  6. **Configuring Nginx**
     * **sudo apt install nginx** (Make sure that the virtual environment in activated)
     * **sudo rm/etc/nginx/sites-enabled/default** (Remove the default nginx config file)
@@ -82,5 +87,5 @@
     * **sudo mkdir -p /var/log/project** (Creating a directory to store log files)
     * **sudo touch /var/log/project/project.err.log** (Process writes normal information to this file)
     * **sudo touch /var/log/project/project.out.log** (Process writes error information to this file)
-    * **sudo supervisorctl reload**
-    * **sudo systemctl restart nginx** 
+    * **sudo supervisorctl restart** (Stops and restarts all managed applications)
+    * **sudo systemctl restart nginx** (Closes all the sub-processes adn restarts the whole package)
