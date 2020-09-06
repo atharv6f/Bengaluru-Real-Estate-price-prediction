@@ -62,7 +62,7 @@
             proxy_redirect off;
         }
     }
-        ```
+       ```
   
    * **sudo systemctl restart nginx** (Closes all the sub-processes adn restarts the whole package)
  8. **Configuring Gunicorn**
