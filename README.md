@@ -18,8 +18,8 @@
 2. **sudo apt-get update** (To update the existing software on AMI)
 3. **sudo apt install python3-pip**( Install pip)
 4. **Virtual Environment**
-      * *Create Virtual environment*: sudo apt install python3-venv
-      * *Activating Virtual environment*: source venv/bin/activate
-      * *Installing Libraries*: pip install -r requirements.txt
+      * *Create Virtual environment*: **sudo apt install python3-venv**
+      * *Activating Virtual environment*: **source venv/bin/activate**
+      * *Installing Libraries*: **pip install -r requirements.txt**
       
  5. 
