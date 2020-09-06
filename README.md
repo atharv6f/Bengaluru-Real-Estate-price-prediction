@@ -56,12 +56,12 @@
                 alias /home/YOUR_USER/YOUR_PROJECT/project/static;
             }
 
-        location / {
-            proxy_pass http://localhost:8000;
-            include /etc/nginx/proxy_params;
-            proxy_redirect off;
-        }
-    }
+            location / {
+                proxy_pass http://localhost:8000;
+                include /etc/nginx/proxy_params;
+                proxy_redirect off;
+            }
+       }
        ```
   
    * **sudo systemctl restart nginx** (Closes all the sub-processes adn restarts the whole package)
