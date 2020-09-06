@@ -64,3 +64,16 @@
  8. **Configuring Supervisor**
  * **sudo apt install supervisor** (Install supervisor in the virtual environment)
  
+```
+[program:project]
+directory=/home/YOUR_USER/YOUR_PROJECT
+command=/home/YOUR_USER/YOUR_PROJECT/venv/bin/gunicorn -w 3 app:app
+user=YOUR_USER
+autostart=true
+autorestart=true
+stopasgroup=true
+killasgroup=true
+stderr_logfile=/var/log/flaskblog/flaskblog.err.log
+stdout_logfile=/var/log/flaskblog/flaskblog.out.log
+```
+
