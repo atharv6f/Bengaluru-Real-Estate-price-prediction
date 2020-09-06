@@ -15,6 +15,9 @@
 ## Part 3: Deploying on AWS
 
 1. Launch an EC2 instance running Ubuntu 18.04 AMI.
+2. Set up security with the following configuration
+     * **Inbound Rules**: Allow http traffic at port 80, https traffic at port 443 and SSH(TCP protocol)  at port 22
+     * **Outbound Rules**: Allow all inbound traffic
 2. **sudo apt-get update** (To update the existing software on AMI)
 3. **sudo apt install python3-pip**( Install pip)
 4. **Virtual Environment**
@@ -22,4 +25,13 @@
       * *Activating Virtual environment*: **source venv/bin/activate**
       * *Installing Libraries*: **pip install -r requirements.txt**
       
- 5. 
+ 5. **Configuring Environment Variables**
+     * **sudo touch /etc/config.json** (Add environment variables in this file.)
+     * **sudo nano /etc/config.json** 
+     ```
+     {
+          'SECRET_KEY': "YOUR_SECRET_KEY",
+          'EMAIL_USER': "YOUR EMAIL ADDRESS",
+          'EMAIL_PASS': "YOUR PASSWORD"
+     }
+     ```
