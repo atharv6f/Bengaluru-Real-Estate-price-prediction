@@ -61,3 +61,6 @@
  * **gunicorn -w 3 app:app** (Number of workers = 2 * (Number of cores) + 1)
  * **nproc --all** (Gives the number of cores)
  
+ 8. **Configuring Supervisor**
+ * **sudo apt install supervisor** (Install supervisor in the virtual environment)
+ 
