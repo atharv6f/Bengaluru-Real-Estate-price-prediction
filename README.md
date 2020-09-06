@@ -8,7 +8,7 @@
 * **Dataset**: https://www.kaggle.com/amitabhajoy/bengaluru-house-price-data
 
 ## Part 2: Web Application
-* **git clone https://github.com/atharv6f/Bengaluru-Real-Estate-price-prediction.git **
+* **git clone https://github.com/atharv6f/Bengaluru-Real-Estate-price-prediction.git**
 * **Web Development Stack**: Python-Flask
 * **Database Engine**: SQLite
 
@@ -67,13 +67,13 @@
   
    * **sudo systemctl restart nginx** (Closes all the sub-processes adn restarts the whole package)
    
- 8. **Configuring Gunicorn**
+ 9. **Configuring Gunicorn**
     * *Once Nginx decides, that a particular request should be passed on Gunicorn, then, Gunicorn translates requests coming in from Nginx to be WSGI compatible, translates the WSGI responses of our app into proper http responses and actually calls the python code when a request comes in*
     * **pip install gunicorn** (Again make sure that the virtual environment is activated)
     * **gunicorn -w 3 app:app** (Number of workers = 2 * (Number of cores) + 1)
     * **nproc --all** (Gives the number of cores)
  
- 9. **Configuring Supervisor**
+ 10. **Configuring Supervisor**
     * *Supervisor looks after the Gunicorn processes and it makes sure that they are restarted if anything goes wrong.*
     * **sudo apt install supervisor** (Install supervisor in the virtual environment)
     * **sudo nano /etc/supervisor/conf.d/<file_name>.conf** (Copy this code in <file_name>.conf file)
