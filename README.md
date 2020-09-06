@@ -56,4 +56,8 @@
     }
 }
  ```
+ 7. **Configuring Gunicorn**
+ * **pip install gunicorn** (Again make sure that the virtual environment is activated)
+ * **gunicorn -w 3 app:app** (Number of workers = 2 * (Number of cores) + 1)
+ * **nproc --all** (Gives the number of cores)
  
