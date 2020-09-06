@@ -67,13 +67,13 @@
   
    * **sudo systemctl restart nginx** (Closes all the sub-processes adn restarts the whole package)
    
- 9. **Configuring Gunicorn**
+ 8. **Configuring Gunicorn**
     * *Once Nginx decides, that a particular request should be passed on Gunicorn, then, Gunicorn translates requests coming in from Nginx to be WSGI compatible, translates the WSGI responses of our app into proper http responses and actually calls the python code when a request comes in*
     * **pip install gunicorn** (Again make sure that the virtual environment is activated)
     * **gunicorn -w 3 app:app** (Number of workers = 2 * (Number of cores) + 1)
     * **nproc --all** (Gives the number of cores)
  
- 10. **Configuring Supervisor**
+ 9. **Configuring Supervisor**
     * *Supervisor looks after the Gunicorn processes and it makes sure that they are restarted if anything goes wrong.*
     * **sudo apt install supervisor** (Install supervisor in the virtual environment)
     * **sudo nano /etc/supervisor/conf.d/<file_name>.conf** (Copy this code in <file_name>.conf file)
