@@ -40,7 +40,8 @@
     * **flask db init** (Creates a migration repo that stores different versions of our database schema)
     * **flask db migrate -m "YOUR_MESSAGE"** (Generates the initial migration accounting for the changes in the database schema)
     * **flask db upgrade** (Applies the upgrade to the database schema)
- 6. **Configuring Nginx**
+    
+ 7. **Configuring Nginx**
     * **sudo apt install nginx** (Make sure that the virtual environment in activated)
     * **sudo rm/etc/nginx/sites-enabled/default** (Remove the default nginx config file)
     * **sudo touch /etc/nginx/sites-enabled/any_file_name** (Create our own config file in the sites-enabled directory
@@ -61,14 +62,15 @@
             proxy_redirect off;
         }
     }
-    ```
+        ```
+  
    * **sudo systemctl restart nginx** (Closes all the sub-processes adn restarts the whole package)
- 7. **Configuring Gunicorn**
+ 8. **Configuring Gunicorn**
     * **pip install gunicorn** (Again make sure that the virtual environment is activated)
     * **gunicorn -w 3 app:app** (Number of workers = 2 * (Number of cores) + 1)
     * **nproc --all** (Gives the number of cores)
  
- 8. **Configuring Supervisor**
+ 9. **Configuring Supervisor**
     * **sudo apt install supervisor** (Install supervisor in the virtual environment)
  
     ```
