@@ -39,7 +39,8 @@
  * **sudo apt install nginx** (Make sure that the virtual environment in activated)
  * **sudo rm/etc/nginx/sites-enabled/default** (Remove the default nginx config file)
  * **sudo touch /etc/nginx/sites-enabled/any_file_name** (Create our own config file in the sites-enabled directory
- * **sudi nano /etc/nginx/sites-enabled/any_file_name** 
+ * **sudo nano /etc/nginx/sites-enabled/any_file_name** 
+ * **sudo systemctl restart nginx** 
  ```
  server {
     listen 80;
@@ -80,3 +81,5 @@ stdout_logfile=/var/log/project/project.out.log
 * **sudo mkdir -p /var/log/project** (Creating a directory to store log files)
 * **sudo touch /var/log/project/project.err.log** (Process writes normal information to this file)
 * **sudo touch /var/log/project/project.out.log** (Process writes error information to this file)
+* **sudo supervisorctl reload**
+* **sudo systemctl restart nginx** 
