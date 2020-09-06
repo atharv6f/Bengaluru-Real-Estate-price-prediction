@@ -73,7 +73,10 @@ autostart=true
 autorestart=true
 stopasgroup=true
 killasgroup=true
-stderr_logfile=/var/log/flaskblog/flaskblog.err.log
-stdout_logfile=/var/log/flaskblog/flaskblog.out.log
+stderr_logfile=/var/log/project/project.err.log
+stdout_logfile=/var/log/project/project.out.log
 ```
 
+* **sudo mkdir -p /var/log/project** (Creating a directory to store log files)
+* **sudo touch /var/log/project/project.err.log** (Process writes normal information to this file)
+* **sudo touch /var/log/project/project.out.log** (Process writes error information to this file)
