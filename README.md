@@ -26,60 +26,60 @@
       * *Installing Libraries*: **pip install -r requirements.txt**
       
  5. **Configuring Environment Variables**
-     * **sudo touch /etc/config.json** (Add environment variables in this file.)
-     * **sudo nano /etc/config.json**  (Copy the following code in the config.json file)
-     ```
-     {
+      * **sudo touch /etc/config.json** (Add environment variables in this file.)
+      * **sudo nano /etc/config.json**  (Copy the following code in the config.json file)
+          ```
+         {
           'SECRET_KEY': "YOUR_SECRET_KEY",
           'EMAIL_USER': "YOUR EMAIL ADDRESS",
           'EMAIL_PASS': "YOUR PASSWORD"
-     }
-     ```
+         }
+        ```
  6. **Configuring Nginx**
- * **sudo apt install nginx** (Make sure that the virtual environment in activated)
- * **sudo rm/etc/nginx/sites-enabled/default** (Remove the default nginx config file)
- * **sudo touch /etc/nginx/sites-enabled/any_file_name** (Create our own config file in the sites-enabled directory
- * **sudo nano /etc/nginx/sites-enabled/any_file_name** 
- * **sudo systemctl restart nginx** 
- ```
- server {
-    listen 80;
-    server_name YOUR_IP_OR_DOMAIN;
+    * **sudo apt install nginx** (Make sure that the virtual environment in activated)
+    * **sudo rm/etc/nginx/sites-enabled/default** (Remove the default nginx config file)
+    * **sudo touch /etc/nginx/sites-enabled/any_file_name** (Create our own config file in the sites-enabled directory
+    * **sudo nano /etc/nginx/sites-enabled/any_file_name** 
+    * **sudo systemctl restart nginx** 
+        ```
+        server {
+            listen 80;
+            server_name YOUR_IP_OR_DOMAIN;
 
-    location /static {
-        alias /home/YOUR_USER/YOUR_PROJECT/project/static;
-    }
+            location /static {
+                alias /home/YOUR_USER/YOUR_PROJECT/project/static;
+            }
 
-    location / {
-        proxy_pass http://localhost:8000;
-        include /etc/nginx/proxy_params;
-        proxy_redirect off;
+        location / {
+            proxy_pass http://localhost:8000;
+            include /etc/nginx/proxy_params;
+            proxy_redirect off;
+        }
     }
-}
- ```
+    ```
  7. **Configuring Gunicorn**
- * **pip install gunicorn** (Again make sure that the virtual environment is activated)
- * **gunicorn -w 3 app:app** (Number of workers = 2 * (Number of cores) + 1)
- * **nproc --all** (Gives the number of cores)
+    * **pip install gunicorn** (Again make sure that the virtual environment is activated)
+    * **gunicorn -w 3 app:app** (Number of workers = 2 * (Number of cores) + 1)
+    * **nproc --all** (Gives the number of cores)
  
  8. **Configuring Supervisor**
- * **sudo apt install supervisor** (Install supervisor in the virtual environment)
+    * **sudo apt install supervisor** (Install supervisor in the virtual environment)
  
-```
-[program:project]
-directory=/home/YOUR_USER/YOUR_PROJECT
-command=/home/YOUR_USER/YOUR_PROJECT/venv/bin/gunicorn -w 3 app:app
-user=YOUR_USER
-autostart=true
-autorestart=true
-stopasgroup=true
-killasgroup=true
-stderr_logfile=/var/log/project/project.err.log
-stdout_logfile=/var/log/project/project.out.log
-```
+    ```
+    [program:project]
+    directory=/home/YOUR_USER/YOUR_PROJECT
+    command=/home/YOUR_USER/YOUR_PROJECT/venv/bin/gunicorn -w 3 app:app
+    user=YOUR_USER
+    autostart=true
+    autorestart=true
+    stopasgroup=true
+    killasgroup=true
+    stderr_logfile=/var/log/project/project.err.log
+    stdout_logfile=/var/log/project/project.out.log
+    ```
 
-* **sudo mkdir -p /var/log/project** (Creating a directory to store log files)
-* **sudo touch /var/log/project/project.err.log** (Process writes normal information to this file)
-* **sudo touch /var/log/project/project.out.log** (Process writes error information to this file)
-* **sudo supervisorctl reload**
-* **sudo systemctl restart nginx** 
+    * **sudo mkdir -p /var/log/project** (Creating a directory to store log files)
+    * **sudo touch /var/log/project/project.err.log** (Process writes normal information to this file)
+    * **sudo touch /var/log/project/project.out.log** (Process writes error information to this file)
+    * **sudo supervisorctl reload**
+    * **sudo systemctl restart nginx** 
