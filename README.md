@@ -15,13 +15,13 @@
 ## Part 3: Deploying on AWS
 
 1. Launch an EC2 instance running Ubuntu 18.04 AMI.
-2. Set up security with the following configuration
+2. Set up a security group with the following configuration
      * **Inbound Rules**: Allow http traffic at port 80, https traffic at port 443 and SSH(TCP protocol)  at port 22
      * **Outbound Rules**: Allow all inbound traffic
 2. **sudo apt-get update** (To update the existing software on AMI)
 3. **sudo apt install python3-pip**( Install pip)
 4. **Virtual Environment**
-      * *Create Virtual environment*: **sudo apt install python3-venv**
+      * *Creating a Virtual environment*: **sudo apt install python3-venv**
       * *Activating Virtual environment*: **source venv/bin/activate**
       * *Installing Libraries*: **pip install -r requirements.txt**
       
@@ -46,7 +46,7 @@
     * **sudo apt install nginx** (Make sure that the virtual environment in activated)
     * **sudo rm/etc/nginx/sites-enabled/default** (Remove the default nginx config file)
     * **sudo touch /etc/nginx/sites-enabled/any_file_name** (Create our own config file in the sites-enabled directory
-    * **sudo nano /etc/nginx/sites-enabled/any_file_name** 
+    * **sudo nano /etc/nginx/sites-enabled/any_file_name** (Copy this code in the <file_name>.conf file)
     
         ```
         server {
@@ -76,7 +76,7 @@
  10. **Configuring Supervisor**
     * *Supervisor looks after the Gunicorn processes and it makes sure that they are restarted if anything goes wrong.*
     * **sudo apt install supervisor** (Install supervisor in the virtual environment)
- 
+    * **sudo nano /etc/supervisor/conf.d/<file_name>.conf** (Copy this code in <file_name>.conf file)
     ```
     [program:project]
     directory=/home/YOUR_USER/YOUR_PROJECT
