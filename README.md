@@ -73,7 +73,7 @@
     * **gunicorn -w 3 app:app** (Number of workers = 2 * (Number of cores) + 1)
     * **nproc --all** (Gives the number of cores)
  
- 10. **Configuring Supervisor**
+* **Configuring Supervisor**
     * *Supervisor looks after the Gunicorn processes and it makes sure that they are restarted if anything goes wrong.*
     * **sudo apt install supervisor** (Install supervisor in the virtual environment)
     * **sudo nano /etc/supervisor/conf.d/<file_name>.conf** (Copy this code in <file_name>.conf file)
